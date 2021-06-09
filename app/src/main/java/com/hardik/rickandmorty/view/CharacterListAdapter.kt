@@ -1,5 +1,6 @@
 package com.hardik.rickandmorty.view
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import com.hardik.rickandmorty.R
 import com.hardik.rickandmorty.databinding.ItemCharacterListBinding
 import com.hardik.rickandmorty.model.CharacterModel
 import com.hardik.rickandmorty.utils.ClickListener
+import com.hardik.rickandmorty.utils.Constant.EXTRA_KEY
+import com.hardik.rickandmorty.utils.Constant.INTENT_LAUNCH_CHARACTER_DETAILS
 
 class CharacterListAdapter(private val characterList: ArrayList<CharacterModel>) :
         RecyclerView.Adapter<CharacterListAdapter.CharacterViewHolder>(), ClickListener{
@@ -30,7 +33,11 @@ class CharacterListAdapter(private val characterList: ArrayList<CharacterModel>)
     }
 
     override fun onClickListener(view: View) {
-       Log.d("Hardik:","onItemClick")
+       Log.d("Hardik:","onItemClick${view.getTag()}")
+        val intent = Intent()
+        intent.putExtra(EXTRA_KEY,view.getTag().toString())
+        intent.action = INTENT_LAUNCH_CHARACTER_DETAILS
+       view.context.startActivity(intent)
     }
 
     fun updateList(newList: List<CharacterModel>) {

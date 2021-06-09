@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = charsListAdapter
         }
-
         updateData()
     }
 
