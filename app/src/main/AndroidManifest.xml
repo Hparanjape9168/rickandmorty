@@ -12,15 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rickandmorty">
+        <activity android:name=".view.EpisodeListActivity">
+            <intent-filter>
+                <action android:name="com.hardik.rickandmorty.view.EpisodeListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".view.CharacterDetailActivity">
             <intent-filter>
-                <action android:name="com.hardik.rickandmorty.view.CharacterDetailActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.hardik.rickandmorty.view.CharacterDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

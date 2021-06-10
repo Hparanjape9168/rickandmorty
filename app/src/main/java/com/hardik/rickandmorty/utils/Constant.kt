@@ -9,5 +9,6 @@ object Constant {
     const val INTENT_LAUNCH_CHARACTER_DETAILS = "com.hardik.rickandmorty.view.CharacterDetailActivity"
     const val EXTRA_KEY = "key"
     const val NAVIGATE_TAG = "NAVIGATE_TAG"
+    const val TAG = "Hardik"
     var layoutVisible = MutableLiveData(false)
 }

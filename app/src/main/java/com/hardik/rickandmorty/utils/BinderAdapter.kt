@@ -37,19 +37,25 @@ fun loadImage(view: ImageView, url: String?){
     view.loadImage(url, getProgressDrawable(view.context))
 }
 
-@BindingAdapter("bind:textVisible")
-fun showVisibilityText(view: TextView, isVisible: Boolean){
-    if(isVisible)
-        view.visibility = View.VISIBLE
-    else
-        view.visibility = View.GONE
+@BindingAdapter("bind:textEpisode")
+fun textViewEpisode(view: TextView, number : Int){
+  view.text = "Episode Number: "+number
 }
 
-@BindingAdapter("bind:layoutVisible")
-fun showVisibilityLayout(view: LinearLayout, isVisible: Boolean){
-    if(isVisible)
-        view.visibility = View.VISIBLE
-    else
-        view.visibility = View.GONE
+@BindingAdapter("bind:textEpisodeName")
+fun textViewEpisodeName(view: TextView, name:String){
+    view.text = "Name: "+name
 }
+
+@BindingAdapter("bind:textEpisodeRelease")
+fun textViewEpisodeRelease(view: TextView, release:String){
+    view.text = "Release Date: "+release
+}
+
+@BindingAdapter("bind:textEpisodeNumber")
+fun textViewEpisodeNumber(view: TextView, number:String){
+    view.text = "Series Number: "+number
+}
+
+
 

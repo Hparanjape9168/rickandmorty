@@ -2,8 +2,10 @@ package com.hardik.rickandmorty.utils
 
 import com.hardik.rickandmorty.model.CharacterDetailsModel
 import com.hardik.rickandmorty.model.CharacterListModel
+import com.hardik.rickandmorty.model.EpisodeModel
 import com.hardik.rickandmorty.model.LocationModel
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,5 +29,9 @@ class APIService(url: String) {
 
     fun getLocation(id : Int) : Observable<LocationModel>{
         return api.getLocation(id)
+    }
+
+    fun getEpisodes(url : String) : Single<List<EpisodeModel>>{
+        return  api.getEpisodes(url)
     }
 }
