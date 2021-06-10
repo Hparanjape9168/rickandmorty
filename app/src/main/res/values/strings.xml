@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">rickandmorty</string>
+    <string name="app_name">Rick and Morty</string>
+    <string name="click_here">Click here for details</string>
 </resources>

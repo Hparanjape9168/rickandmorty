@@ -16,17 +16,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:onClick="@{listener::onClickListener}"
-        android:tag="@{episode.id}">
+        android:background="@color/layout_blue"
+        android:tag="@{episode.id}"
+        bind:layout_constraintBottom_toBottomOf="@+id/textViewEpisodeName"
+        bind:layout_constraintTop_toBottomOf="@+id/textViewEpisodeName">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             bind:textEpisode="@{episode.id}"
-            android:textSize="25dp"
+            android:textSize="19dp"
+            android:textStyle="bold"
             bind:layout_constraintEnd_toEndOf="parent"
             bind:layout_constraintStart_toStartOf="parent"
             bind:layout_constraintTop_toTopOf="parent" />
@@ -36,38 +38,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
+            android:layout_marginTop="5dp"
             android:singleLine="true"
-            bind:textEpisodeName="@{episode.name}"
-            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:textName="@{episode.name}"
+            android:textSize="17dp"
             bind:layout_constraintStart_toStartOf="parent"
-            bind:layout_constraintTop_toTopOf="parent" />
+            bind:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/textViewEpisodeDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            bind:textEpisodeRelease="@{episode.air_date}"
+            android:layout_marginTop="5dp"
+            android:textSize="17dp"
             bind:layout_constraintStart_toStartOf="@+id/textViewEpisodeName"
-            bind:layout_constraintTop_toBottomOf="@+id/textViewEpisodeName" />
+            bind:layout_constraintTop_toBottomOf="@+id/textViewEpisodeName"
+            bind:textEpisodeRelease="@{episode.air_date}" />
 
         <TextView
             android:id="@+id/textViewEpisodeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="10dp"
-            bind:textEpisodeNumber="@{episode.episode}"
-            bind:layout_constraintStart_toStartOf="parent"
-            bind:layout_constraintTop_toBottomOf="@+id/textViewEpisodeDate" />
+            android:layout_marginTop="5dp"
+            android:paddingBottom="8dp"
+            android:textSize="17dp"
+            bind:layout_constraintStart_toStartOf="@+id/textViewEpisodeDate"
+            bind:layout_constraintTop_toBottomOf="@+id/textViewEpisodeDate"
+            bind:textEpisodeNumber="@{episode.episode}" />
 
         <View
-            android:id="@+id/view_Line"
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_marginTop="15dp"
-            android:background="#000000"
-            bind:layout_constraintTop_toBottomOf="parent" />
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="8px"
+            android:background="@color/dark_blue"
+            bind:layout_constraintBottom_toBottomOf="@+id/textViewEpisodeNumber"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

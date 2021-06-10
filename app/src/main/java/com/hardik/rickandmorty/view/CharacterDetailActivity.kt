@@ -2,10 +2,12 @@ package com.hardik.rickandmorty.view
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,15 +29,17 @@ class CharacterDetailActivity : AppCompatActivity(), ClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_character_detail)
         characterDetailsViewModel = ViewModelProvider(this).get(CharacterDetailsViewModel::class.java)
+
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         binding.listener = this
+        viewVisibility(true)
         val charsId = intent?.extras?.getString(Constant.EXTRA_KEY)
         charsId?.let {
             characterDetailsViewModel.callCharacterDetailsAPI(charsId.toInt())
         }
-        Log.d("Hardik:: CharacterDetailActivity ",""+charsId)
-        binding.textViewLocationMain.visibility = View.VISIBLE
-        binding.textViewLocationDetails.visibility = View.VISIBLE
-        binding.linearLayoutDropdown.visibility = View.GONE
+        Log.d(Constant.TAG+"CharacterDetailActivity ",""+charsId)
+
         observerData()
     }
 
@@ -60,30 +64,48 @@ class CharacterDetailActivity : AppCompatActivity(), ClickListener {
     }
     override fun onClickListener(view: View) {
         if(view.tag == NAVIGATE_TAG && episodesList.isNotEmpty()){
-        val intent = Intent(this,EpisodeListActivity::class.java)
-        intent.putExtra(Constant.EXTRA_KEY,episodesList)
-        startActivity(intent)
-        return
+            val intent = Intent(this,EpisodeListActivity::class.java)
+            intent.putExtra(Constant.EXTRA_KEY,episodesList)
+            startActivity(intent)
+            return
         }
 
         if(!Constant.layoutVisible.value!!){
+            viewVisibility(false)
             Constant.layoutVisible.value = true
-            // DropDown Open
-            binding.textViewLocationMain.visibility = View.GONE
-            binding.textViewLocationDetails.visibility = View.GONE
-            binding.linearLayoutDropdown.visibility = View.VISIBLE
-
             val stringSplit = Uri.parse(view.tag.toString())
-            Log.d("Hardik","Location Click:${stringSplit.lastPathSegment}")
+            Log.d(Constant.TAG,"Location Click:${stringSplit.lastPathSegment}")
             stringSplit.lastPathSegment?.let {
                 characterDetailsViewModel.callLocationAPI(it.toInt())
             }
         } else {
-            // DropDown close
+            viewVisibility(true)
+            Constant.layoutVisible.value = false
+        }
+    }
+
+    private fun viewVisibility(isVisible : Boolean){
+        if(isVisible){
+            // DropDown Close
             binding.textViewLocationMain.visibility = View.VISIBLE
             binding.textViewLocationDetails.visibility = View.VISIBLE
             binding.linearLayoutDropdown.visibility = View.GONE
-            Constant.layoutVisible.value = false
         }
+        else{
+            // DropDown Open
+            binding.textViewLocationMain.visibility = View.GONE
+            binding.textViewLocationDetails.visibility = View.GONE
+            binding.linearLayoutDropdown.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

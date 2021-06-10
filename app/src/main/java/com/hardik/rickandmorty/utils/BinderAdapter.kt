@@ -42,19 +42,34 @@ fun textViewEpisode(view: TextView, number : Int){
   view.text = "Episode Number: "+number
 }
 
-@BindingAdapter("bind:textEpisodeName")
-fun textViewEpisodeName(view: TextView, name:String){
+@BindingAdapter("bind:textName")
+fun textViewName(view: TextView, name:String?){
     view.text = "Name: "+name
 }
 
 @BindingAdapter("bind:textEpisodeRelease")
-fun textViewEpisodeRelease(view: TextView, release:String){
+fun textViewEpisodeRelease(view: TextView, release:String?){
     view.text = "Release Date: "+release
 }
 
 @BindingAdapter("bind:textEpisodeNumber")
-fun textViewEpisodeNumber(view: TextView, number:String){
+fun textViewEpisodeNumber(view: TextView, number:String?){
     view.text = "Series Number: "+number
+}
+
+@BindingAdapter("bind:textStatus")
+fun textViewStatus(view: TextView, status: String?){
+    view.text = "Status: "+status
+}
+
+@BindingAdapter("bind:textSpecies")
+fun textViewSpecies(view: TextView, species: String?){
+    view.text = "Species: "+species
+}
+
+@BindingAdapter("bind:textGender")
+fun textViewGender(view: TextView, gender: String?){
+    view.text = "Gender: "+gender
 }
 
 

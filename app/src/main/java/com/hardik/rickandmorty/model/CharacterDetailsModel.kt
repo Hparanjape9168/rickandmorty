@@ -7,21 +7,21 @@ data class CharacterDetailsModel(
     val id: Int,
 
     @SerializedName("name")
-    val name : String?,
+    val name : String = "",
 
     @SerializedName("status")
-    val status : String?,
+    val status : String = "",
 
     @SerializedName("gender")
-    val gender : String?,
+    val gender : String ="",
 
     @SerializedName("image")
-    val image : String?,
+    val image : String ="",
 
     @SerializedName("location")
     val location : LocationModel,
 
     @SerializedName("episode")
-    val episode : ArrayList<String>
+    val episode : ArrayList<String> = arrayListOf()
 
 )
