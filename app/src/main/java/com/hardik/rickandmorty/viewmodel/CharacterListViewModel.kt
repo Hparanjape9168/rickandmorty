@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 class CharacterListViewModel : ViewModel() {
 
     private val disposable = CompositeDisposable()
-    private val apiService = APIService(Constant.CHARACTER_LIST_BASE_URL)
+    private val apiService = APIService(Constant.BASE_URL)
     private val _characterList = MutableLiveData<List<CharacterModel>>()
     val characterList : LiveData<List<CharacterModel>> = _characterList
 
